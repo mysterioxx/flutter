@@ -14,6 +14,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title), // Removed extra colon
+        actions: [
+          IconButton(
+            onPressed: () {
+              showSearch(
+                context,
+                delegate: CustomSearchDelegate(), // Corrected class name
+              );
+            },
+            icon: const Icon(Icons.search),
+          )
+        ],
+      ),
+
       bottomNavigationBar: Container(
         color: Colors.black,
         child: Padding(
@@ -55,5 +70,37 @@ class _HomePageState extends State<HomePage> {
       ),
       // Scaffold body or other properties go here
     );
+  }
+}
+class CustomSearchDelegate extends SearchDelegate {
+  List<String> searchTerms = [
+    'google',
+    'edge',
+    'yahoo',
+    'duckduckgo',
+  ];
+
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    // Implementation for actions
+    return [];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    // Implementation for leading widget
+    return Container();
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // Implementation for search results
+    return Container();
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // Implementation for search suggestions
+    return Container();
   }
 }
